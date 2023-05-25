@@ -1,9 +1,9 @@
 import sharp from 'sharp'
 
 const ImageQuery = async (
-  filename?: string,
-  width?: number,
-  height?: number
+  filename: string,
+  width: number,
+  height: number
 ): Promise<boolean> => {
   try {
     const result = await sharp(`src/assets/images/${filename}.jpg`)

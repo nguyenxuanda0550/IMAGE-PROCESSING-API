@@ -1,4 +1,4 @@
-import app from '../index'
+import app from '..'
 import resizeImage from '../resize'
 import supertest from 'supertest'
 

@@ -29,6 +29,7 @@ app.get('/api/images', async (req, res) => {
 
     if (req.query.filename) {
       filename = req.query.filename.toString()
+      console.log("filename",filename)
       const isExist = await checkFile(filename)
       if (!isExist) {
         await resizeImage(filename, width, height)
