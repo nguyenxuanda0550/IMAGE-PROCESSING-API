@@ -14,3 +14,4 @@ describe('Test endpoint responses', () => {
     await request.get('/api/images').expect(200)
   })
 })
+

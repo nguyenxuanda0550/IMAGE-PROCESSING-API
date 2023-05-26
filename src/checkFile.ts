@@ -1,8 +1,9 @@
 import { accessSync, constants } from 'fs'
 
-const checkFile = async (filename: string): Promise<boolean> => {
+const checkFile = async (filename: string, width: number,
+  height: number): Promise<boolean> => {
   try {
-    accessSync(filename, constants.R_OK)
+    accessSync(`${filename}-${width}-${height}.jpg`, constants.R_OK)
     return Promise.resolve(true)
   } catch (err) {
     console.log(err)
