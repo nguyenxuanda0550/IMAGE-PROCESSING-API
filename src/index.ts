@@ -9,11 +9,11 @@ app.get('/', (req, res) => {
   res.send('Image processing API')
 })
 
-app.get('/api/images', async (req, res) => {
+app.get('/api/images', async (req: express.Request, res: express.Response) => {
   try {
-    let filename = ''
-    let width = 200
-    let height = 200
+    let filename = '' as string
+    let width = 200 as number
+    let height = 200 as number
 
     if (req.query.width && !isNaN(+req.query.width)) {
       width = Number(req.query.width) || 200
