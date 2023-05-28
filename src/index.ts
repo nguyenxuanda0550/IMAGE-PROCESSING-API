@@ -9,11 +9,11 @@ app.get('/', (req, res) => {
   res.send('Image processing API')
 })
 
-app.get('/api/images', async (req: express.Request, res: express.Response) => {
+app.get('/api/images', async (req, res) => {
   try {
-    let filename = '' as string
-    let width = 200 as number
-    let height = 200 as number
+    let filename = ''
+    let width = 200
+    let height = 200
 
     if (req.query.width && !isNaN(+req.query.width)) {
       width = Number(req.query.width) || 200
@@ -29,9 +29,9 @@ app.get('/api/images', async (req: express.Request, res: express.Response) => {
 
     if (req.query.filename) {
       filename = req.query.filename.toString()
-      const isExist = await checkFile(filename as string, width as number, height as number)
+      const isExist = await checkFile(filename, width, height)
       if (!isExist) {
-        await resizeImage(filename as string, width as number, height as number)
+        await resizeImage(filename, width, height)
       }
       res.sendFile(
         `${__dirname}/assets/thumb/${filename}-${width}-${height}.jpg`
