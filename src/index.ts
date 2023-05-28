@@ -18,20 +18,20 @@ app.get('/api/images', async (req, res) => {
     if (req.query.width && !isNaN(+req.query.width)) {
       width = Number(req.query.width) || 200
     } else {
-      throw 'Width empty, please input the width'
+      throw 'Width must be number and not empty'
     }
 
     if (req.query.height && !isNaN(+req.query.height)) {
       height = Number(req.query.height) || 200
     } else {
-      throw 'Height empty, please input the height'
+      throw 'Height  must be number and not empty'
     }
 
     if (req.query.filename) {
       filename = req.query.filename.toString()
       const isExist = await checkFile(filename as string, width as number, height as number)
       if (!isExist) {
-        await resizeImage(filename, width, height)
+        await resizeImage(filename as string, width as number, height as number)
       }
       res.sendFile(
         `${__dirname}/assets/thumb/${filename}-${width}-${height}.jpg`
